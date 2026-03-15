@@ -65,9 +65,18 @@ export default class MarkdownHeadingsPlugin extends Plugin {
 }
 
 function changeSelectionMarkdownHeadingsDepth(editor: Editor, depth: number) {
+	const from = editor.getCursor("from");
+	const to = editor.getCursor("to");
 	const selection = editor.getSelection();
 	changeMarkdownHeadingsDepth(selection, depth).then((modified) => {
-		editor.replaceSelection(modified);
+		editor.replaceRange(modified, from, to);
+		const lines = modified.split("\n");
+		const lastLine = lines[lines.length - 1];
+		const newTo = {
+			line: from.line + lines.length - 1,
+			ch: lines.length === 1 ? from.ch + lastLine.length : lastLine.length,
+		};
+		editor.setSelection(from, newTo);
 	});
 }
 
