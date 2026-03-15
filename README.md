@@ -1,6 +1,6 @@
 # Obsidian Markdown Headings
 
-Thi is a [Obsidian](https://obsidian.md) plugin to increase and decrease depth of headings. So for example going from `## My Heading` to `# My Heading` or `### My Heading`.
+This is a [Obsidian](https://obsidian.md) plugin to increase and decrease depth of headings. So for example going from `## My Heading` to `# My Heading` or `### My Heading`.
 
 This project uses Typescript to provide type checking and documentation.
 
